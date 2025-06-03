@@ -1,26 +1,27 @@
-/* Novo esquema de cores */
+/* Nova paleta de cores monocromática */
 :root {
-    --color-light: #F2D7EE;
-    --color-light-accent: #D3BCC0;
-    --color-medium: #A5668B;
-    --color-dark: #69306D;
-    --color-darkest: #0E103D;
+    --color-light: #fff97b;     /* Amarelo claro */
+    --color-light-accent: #fff44f;  /* Amarelo médio */
+    --color-medium: #2c2c2c;    /* Cinza escuro */
+    --color-dark: #1a1a1a;      /* Quase preto */
+    --color-darkest: #000000;   /* Preto */
 }
 
 /* background geral */
 body {
-    background-color: var(--color-light);
+    background-color: #f5f5f5;
 }
 
 /* Pequena animação de hover nos cards */
 .card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #fff;
-    border-color: var(--color-light-accent);
+    background-color: #ffffff;
+    border: 1px solid var(--color-light);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .card:hover {
     transform: scale(1.02);
-    box-shadow: 0 0.5rem 1rem rgba(14, 16, 61, 0.15);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 /* Estilizando botões primários */
@@ -28,11 +29,13 @@ body {
     border-radius: 50px;
     background-color: var(--color-dark);
     border-color: var(--color-dark);
+    color: var(--color-light);
 }
 
 .btn-primary:hover, .btn-primary:focus {
     background-color: var(--color-darkest);
     border-color: var(--color-darkest);
+    color: var(--color-light);
 }
 
 /* Estilizando botões secundários */
@@ -132,54 +135,62 @@ body {
 }
 
 /* Estilização da tabela de usuários */
-.table {
-    border-radius: 8px;
+.table-responsive {
+    margin: 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     overflow: hidden;
-    border-collapse: separate;
-    border-spacing: 0;
-    box-shadow: 0 0.125rem 0.25rem rgba(14, 16, 61, 0.075);
 }
 
-.table thead {
-    background-color: var(--color-dark);
-    color: white;
+.table-usuarios {
+    margin: 0;
+    width: 100%;
 }
 
-.table thead th {
-    border-top: none;
-    border-bottom: 2px solid var(--color-darkest);
+.table-usuarios thead {
+    background-color: var(--color-darkest);
+}
+
+.table-usuarios th {
+    color: var(--color-light);
+    font-size: 1.1rem;
     font-weight: 600;
+    padding: 1.25rem 1rem;
     text-transform: uppercase;
-    font-size: 0.85rem;
-    padding: 1rem 0.75rem;
-    color: white;
+    letter-spacing: 0.5px;
 }
 
-.table tbody tr:hover {
-    background-color: rgba(165, 102, 139, 0.1);
-}
-
-.table tbody td {
-    padding: 0.75rem;
-    vertical-align: middle;
-    border-top: 1px solid var(--color-light-accent);
-}
-
-/* Badges */
-.badge.bg-danger {
-    background-color: var(--color-darkest) !important;
-}
-
-.badge.bg-info {
-    background-color: var(--color-dark) !important;
-}
-
-.badge.bg-success {
-    background-color: var(--color-medium) !important;
-}
-
-.btn-sm i {
+.table-usuarios td {
+    padding: 1.25rem 1rem;
     font-size: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    vertical-align: middle;
+}
+
+.table-usuarios tr:hover {
+    background-color: rgba(255, 249, 123, 0.1);
+}
+
+/* Botões de ação */
+.acoes-usuario {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+.btn-acao {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 8px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-acao i {
+    font-size: 1.2rem;
 }
 
 /* Responsividade para dispositivos móveis */
@@ -330,7 +341,7 @@ h5 {
 
 .table thead {
     background-color: var(--color-dark);
-    color: white;
+    color: var(--color-light);
 }
 
 .table thead th {
@@ -340,12 +351,12 @@ h5 {
     text-transform: uppercase;
     font-size: 0.85rem;
     padding: 1rem 0.75rem;
-    color: white;
+    color: var(--color-light);
     white-space: nowrap;
 }
 
 .table tbody tr:hover {
-    background-color: rgba(165, 102, 139, 0.1);
+    background-color: rgba(255, 249, 123, 0.1);
 }
 
 .table tbody td {
@@ -478,5 +489,34 @@ h5 {
     
     h3.fw-bold.mb-0 {
         font-size: 1.3rem;
+    }
+}
+
+/* Estilização da tabela de usuários - Versão mobile */
+@media (max-width: 768px) {
+    .table-usuarios {
+        margin: 0.5rem;
+    }
+
+    .table-usuarios td {
+        padding: 1rem 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .table-usuarios th {
+        padding: 1.25rem 0.75rem;
+        font-size: 1rem;
+    }
+
+    /* Ajuste dos botões de ação */
+    .acoes-usuario {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .btn-acao {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.1rem !important;
     }
 }
